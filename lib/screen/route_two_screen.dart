@@ -28,7 +28,36 @@ class RouteTwo extends StatelessWidget {
               arguments: 999,
             );
           },
-          child: Text('push'),
+          child: Text('push Named'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            // [Home Screen(), RouteOne(), RouteTwo(), RouteThree()]
+            // [Home Screen(), RouteOne(), RouteThree()]
+            // Navigator.of(context).pushReplacement(
+            //   MaterialPageRoute(
+            //     builder: (_) => RouteThree(),
+            //   ),
+            // );
+            Navigator.of(context).pushReplacementNamed('/three');
+          },
+          child: Text('push Replacement'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            // Navigator.of(context).pushAndRemoveUntil(
+            //   MaterialPageRoute(
+            //     builder: (_) => RouteThree(),
+            //   ),
+            //   // route에 return 값을 false로 주면 라우트 삭제, true면 유지
+            //   (route) => route.settings.name == '/',
+            // );
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              '/three',
+              (route) => route.settings.name == '/',
+            );
+          },
+          child: Text('pushAndRemoveUntil'),
         ),
       ],
     );
