@@ -17,6 +17,18 @@ class RouteOne extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         ElevatedButton(
+          onPressed: () async {
+            print(Navigator.of(context).canPop());
+          },
+          child: Text('canPop'),
+        ),
+        ElevatedButton(
+          onPressed: () async {
+            Navigator.of(context).maybePop();
+          },
+          child: Text('maybePop'),
+        ),
+        ElevatedButton(
           onPressed: () {
             Navigator.of(context).pop(456);
           },
